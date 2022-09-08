@@ -1,0 +1,30 @@
+development:
+  adapter: postgresql
+  username: <%= ENV["DATABASE_USERNAME"] || "whistle" %>
+  password: <%= ENV["DATABASE_PASSWORD"] || "" %>
+  database: <%= ENV["DATABASE_NAME"] || "Desafio_development" %>
+  schema_search_path: public
+  host: <%= ENV["DATABASE_HOST"] || "localhost" %>
+  pool: 5
+  min_messages: WARNING
+
+production:
+  url: <%= ENV["POSTGRES_URL"] || ENV["DATABASE_URL"] %>
+  adapter: postgresql
+  username: <%= ENV["DATABASE_USERNAME"] || "whistle" %>
+  password: <%= ENV["DATABASE_PASSWORD"] || "" %>
+  database: <%= ENV["DATABASE_NAME"] || "Desafio_production" %>
+  host: <%= ENV["DATABASE_HOST"] || "localhost" %>
+  encoding: unicode
+  min_messages: WARNING
+  variables:
+    statement_timeout: <%= ENV["DB_STATEMENT_TIMEOUT"] %>
+
+test:
+  adapter: postgresql
+  username: <%= ENV["DATABASE_USERNAME"] || "whistle" %>
+  password: <%= ENV["DATABASE_PASSWORD"] || "" %>
+  database: <%= ENV["DATABASE_NAME"] || "Desafio_test#{ENV['TEST_ENV_NUMBER']}" %>
+  host: <%= ENV["DATABASE_HOST"] || "localhost" %>
+  pool: 5
+  min_messages: WARNING
